@@ -1,0 +1,3 @@
+flask
+request
+google-cloud-speech

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Speech-2-Text API</h1>
+<h2>Specs</h2>
+
+The API is implemented as a POST request with two form parameters, file and parameters. The file should contain the
+audio file data, the optional parameters should be a JSON object with additional configuration. If no parameters are
+provided the default settings are used.
+
+<ul>
+    <li>URL: /api/speech2text</li>
+    <li>curl -X POST -F "file=@[yourfilename]" http://HOST:PORT/api/speech2text</li>
+    <li>curl -X POST -F 'file=@[yourfilename]' -F 'parameters={"encoding": "LINEAR16"}' http://HOST:PORT/api/speech2text</li>
+    <ul>
+        <li>encoding: LINEAR16, AMR, AMR_WB, FLAC, MULAW, OGG_PLUS, SPEEX_WITH_HEADER_BYTE</li>
+    </ul>
+</ul>
+
+<h2>Try It</h2>
+
+You can submit a file using this HTML form.
+
+<form id="uploadbanner" enctype="multipart/form-data" method="post" action="{{ action }}">
+    <input id="fileupload" name="file" type="file"/>
+    <input type="submit" value="submit" id="submit"/>
+</form>
+
+</body>
+</html>
+
