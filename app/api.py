@@ -1,14 +1,12 @@
 #!/usr/bin/env python
 
-from flask import Flask, request, url_for, render_template, Blueprint, jsonify, json
+from flask import Flask, request, url_for, render_template, jsonify, json
 
 from google.cloud import speech
 from google.cloud.speech import types
 from google.cloud.speech import enums
 
 app = Flask(__name__)
-
-errors = Blueprint('errors', __name__)
 
 encoding_types = {
     'LINEAR16': enums.RecognitionConfig.AudioEncoding.LINEAR16 ,
@@ -65,7 +63,7 @@ def convert_audio(content, encoding):
     return transcript
 
 
-@errors.app_errorhandler(Exception)
+@app.errorhandler(Exception)
 def handle_unexpected_error(error):
     status_code = 500
     success = False
