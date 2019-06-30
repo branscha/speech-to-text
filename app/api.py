@@ -21,6 +21,7 @@ encoding_types = {
 
 @app.route('/')
 def index():
+    raise Error()
     return render_template("index.html", action=url_for("speech_to_text_handler"))
 
 
@@ -67,6 +68,7 @@ def convert_audio(content, encoding):
 def handle_unexpected_error(error):
     status_code = 500
     success = False
+    print(type(error))
     response = {
         'success': success,
         'error': {
@@ -75,6 +77,7 @@ def handle_unexpected_error(error):
         }
     }
     return jsonify(response), status_code
+
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True)
